@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:dubbo="http://dubbo.apache.org/schema/dubbo"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://dubbo.apache.org/schema/dubbo http://dubbo.apache.org/schema/dubbo/dubbo.xsd">
+
+
+    <!-- 提供方应用信息，用于计算依赖关系 -->
+    <dubbo:application name="consumer-of-helloworld-app"  />
+
+    <!-- 使用zookeeper广播注册中心暴露服务地址，这里的 2181 是指zookeeper 的启动端口 -->
+    <dubbo:registry address="zookeeper://192.168.13.131:2181" />
+
+    <!-- 指向接口类，这里的id 随意取，目的是通过 Spring容器获取  -->
+    <dubbo:reference id="demoService" interface="service.UserService" />
+
+
+
+</beans>
